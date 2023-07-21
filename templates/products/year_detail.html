@@ -1,0 +1,12 @@
+{% extends 'products/base.html' %}
+{% block content %}
+    {% for pr in years %}
+        {% if pr.title %}
+            <div>
+
+                <a href="{{ pr.get_absolute_url }}">{{ pr.title }}</a>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}

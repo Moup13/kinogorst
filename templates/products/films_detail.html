@@ -1,0 +1,38 @@
+{% extends 'products/base.html' %}
+{% block content %}
+    {% for pro in films %}
+        {% if pro.image.url %}
+            <div>
+                <a href="{{ pro.get_absolute_url }}"><img width="200" height="400" src="{{ pro.image.url }}"
+                                                          class="img-responsive"></a><br>
+                <a href="{{ pro.get_absolute_url }}">{{ pro.title }}</a>
+                <video width="320" height="240" controls="controls">
+                    <source src="{{ MEDIA_URL }}{{ pro.video.url }}" type='video/mp4'>
+                </video>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}
+
+
+{#  {% for year in years %}#}
+{#        {% if year.title %}#}
+{#            <div>#}
+{##}
+{#                <a href="{{ year.get_absolute_url }}">{{ year.title }}</a>#}
+{#            </div>#}
+{#        {% endif %}#}
+{#{% endfor %}#}
+
+
+{#    {% for films in years %}#}
+{#        {{ films.year }}{{ films.year.get }}#}
+{##}
+{#    {% endfor %}#}
+{##}
+{#     {% for films in categorys %}#}
+{#        {{ films.category }}#}
+{##}
+{#    {% endfor %}#}
+{##}

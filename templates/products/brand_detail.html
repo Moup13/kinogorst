@@ -1,0 +1,17 @@
+{% extends "user/base.html" %}
+{% block content %}
+    {% for pro in products %}
+        {% if pro.image.url %}
+            <div>
+                <a href="{{ pro.get_absolute_url }}"><img src="{{ pro.image.url }}" class="img-responsive"></a><br>
+                <a href="{{ pro.get_absolute_url }}">{{ pro.title }}</a>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+
+{% endblock %}
+
+
+

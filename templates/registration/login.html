@@ -1,0 +1,33 @@
+
+{% load static %}
+{% block content %}
+<main class="container my-4">
+	<!-- Featured Products -->
+	<h3 class="my-4 border-bottom pb-1">Login</h3>
+
+		<form method="post" class="form-customer form-login">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Username  *<br><br>{{ form.username }}</label>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password * <br><br>{{ form.password }}</label>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">  <br><br>{{ form.captcha }}</label>
+
+                                </div>
+                                <div class="form-check">
+                                    <button type="submit" class="btn-login hover-white">Login</button>
+
+                                    <a href="{{ '/password-change/'}}" class="lost-password">Lost your password?</a>
+                                </div>
+                            </form>
+
+	<p><a href="{% url 'kinogo:password_change' %}" class="text-danger">Reset Password?</a></p>
+	<p>If you are not registred, Please <a href="{{ '/register/' }}">Signup here</a>.</p>
+</main>
+{% endblock %}

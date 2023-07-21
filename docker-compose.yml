@@ -1,0 +1,50 @@
+version: '3.10'
+services:
+  mysql_db:
+    container_name: 'mysql_db'
+    image: mysql:latest
+    restart: always
+    ports:
+      - '3306:3306'
+    env_file: Kinogor/.env
+
+    volumes:
+      - mysql_data:/var/lib/mysql/data/
+
+  web:
+    build: .
+
+    container_name: 'web'
+    volumes:
+      - static_vol:/app/sub_app/static
+      - media_vol:/app/sub_app/media
+
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+
+    ports:
+      - 8000:8000
+
+    depends_on:
+      - mysql_db
+  nginx:
+    build: ./nginx
+    container_name: nginx_container
+    restart: on-failure
+    ports:
+      - 81:80
+    volumes:
+      - ./static:/static
+      - ./media:/media
+    depends_on:
+      - web
+
+
+
+volumes:
+  mysql_data:
+  static_vol:
+  media_vol:
+

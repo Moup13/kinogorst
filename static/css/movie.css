@@ -1,0 +1,40 @@
+.years{
+    position: absolute;
+    left: 170px;
+    bottom: 500px;
+}
+
+
+.movie_objects_all{
+    top: 470px;
+    position: absolute;
+    left: 650px;
+}
+.movie_all {
+	display: flex;
+
+	position: relative;
+	width:152px;
+	float:left;
+	margin-left: 100px;
+}
+
+
+.genres{
+   position: absolute;
+    left: 40px;
+    bottom: 453px;
+}
+
+.nation{
+    position: absolute;
+    left: 170px;
+    bottom: 273px;
+}
+
+.serials{
+    position: absolute;
+    left: 40px;
+    bottom: 290px;
+
+}
